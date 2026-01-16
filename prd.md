@@ -1,6 +1,7 @@
 # Event Photography Portfolio Website - PRD
 
 ## Project Overview
+
 A premium, multi-page event photography portfolio website featuring cutting-edge anti-gravity animations and stunning visual effects to showcase an all-event photography business.
 
 ---
@@ -8,6 +9,7 @@ A premium, multi-page event photography portfolio website featuring cutting-edge
 ## Brand Identity & Design System
 
 ### Color Palette
+
 - **Primary Dark**: `#0A0A0A` (Deep black for backgrounds)
 - **Secondary Dark**: `#1A1A1A` (Elevated surfaces)
 - **Accent Gold**: `#D4AF37` (Luxury accent, CTAs)
@@ -17,11 +19,13 @@ A premium, multi-page event photography portfolio website featuring cutting-edge
 - **Gradient Overlay**: Linear gradient from `rgba(212, 175, 55, 0.1)` to transparent
 
 ### Typography
+
 - **Headings**: Playfair Display / Cinzel (Elegant serif)
 - **Body**: Inter / Montserrat (Clean sans-serif)
 - **Accent Text**: Italicized serif for quotes/testimonials
 
 ### Visual Style
+
 - Dark luxury aesthetic with gold accents
 - Glassmorphism effects on cards and navigation
 - Smooth, physics-based animations throughout
@@ -33,6 +37,7 @@ A premium, multi-page event photography portfolio website featuring cutting-edge
 ## Technical Stack
 
 ### Frontend
+
 - **Framework**: React 18+ with React Router for multi-page navigation
 - **3D/Physics**: Three.js for anti-gravity effects and 3D interactions
 - **Animation**: Framer Motion for UI animations, GSAP for scroll triggers
@@ -42,6 +47,7 @@ A premium, multi-page event photography portfolio website featuring cutting-edge
 - **Forms**: React Hook Form with validation
 
 ### Backend & Database
+
 - **Backend Framework**: Node.js with Express.js OR Firebase
 - **Database**: PostgreSQL with Prisma ORM OR Firebase Firestore
 - **Authentication**: JWT tokens OR Firebase Auth
@@ -50,12 +56,14 @@ A premium, multi-page event photography portfolio website featuring cutting-edge
 - **Email Service**: SendGrid / Nodemailer for booking notifications
 
 ### Admin/CMS
+
 - **Admin Panel**: Custom React admin dashboard
 - **Rich Text Editor**: TipTap or Slate for project descriptions
 - **Image Upload**: Drag-and-drop with preview
 - **Calendar**: React Big Calendar for booking management
 
 ### Performance Optimizations
+
 - Lazy loading for images and routes
 - Intersection Observer for scroll animations
 - Progressive image loading with blur-up effect
@@ -69,6 +77,7 @@ A premium, multi-page event photography portfolio website featuring cutting-edge
 ## Site Architecture
 
 ### Navigation Structure
+
 ```
 Public Site:
 ├── Home
@@ -113,6 +122,7 @@ Admin Dashboard:
 ## Database Schema
 
 ### Users Table
+
 ```
 - id (UUID, Primary Key)
 - email (String, Unique)
@@ -126,6 +136,7 @@ Admin Dashboard:
 ```
 
 ### Projects Table
+
 ```
 - id (UUID, Primary Key)
 - title (String)
@@ -142,6 +153,7 @@ Admin Dashboard:
 ```
 
 ### Project_Images Table
+
 ```
 - id (UUID, Primary Key)
 - project_id (UUID, Foreign Key -> Projects)
@@ -153,6 +165,7 @@ Admin Dashboard:
 ```
 
 ### Bookings Table
+
 ```
 - id (UUID, Primary Key)
 - client_name (String)
@@ -174,6 +187,7 @@ Admin Dashboard:
 ```
 
 ### Packages Table
+
 ```
 - id (UUID, Primary Key)
 - name (String)
@@ -189,6 +203,7 @@ Admin Dashboard:
 ```
 
 ### Testimonials Table
+
 ```
 - id (UUID, Primary Key)
 - client_name (String)
@@ -203,6 +218,7 @@ Admin Dashboard:
 ```
 
 ### Inquiries Table
+
 ```
 - id (UUID, Primary Key)
 - name (String)
@@ -215,6 +231,7 @@ Admin Dashboard:
 ```
 
 ### Availability_Calendar Table
+
 ```
 - id (UUID, Primary Key)
 - date (Date, Unique)
@@ -230,69 +247,85 @@ Admin Dashboard:
 ### 1. HOME PAGE
 
 #### Hero Section
+
 **Layout:**
+
 - Full viewport height
 - 3D floating camera/lens models in background (Three.js)
 - Floating text elements with parallax depth
 - Particles drifting in anti-gravity motion
 
 **Content:**
+
 - Main headline: "Capturing Moments That Defy Gravity"
 - Subheadline: "Premium Event Photography for Every Occasion"
 - CTA Button: "Explore Our Work" (gold, with glow effect)
 - Scroll indicator with animated arrow
 
 **Animations:**
+
 - Camera models rotate slowly in 3D space
 - Text elements float with subtle bounce physics
 - Mouse movement creates parallax depth effect
 - Smooth scroll reveal for subsequent sections
 
 #### Featured Work Section
+
 **Layout:**
+
 - Masonry grid of 6-8 featured images
 - Images float at different Z-depths
 - Hover effects trigger 3D rotation and scale
 
 **Content:**
+
 - Section title: "Featured Moments"
 - Mix of event types (weddings, corporate, parties, concerts)
 - Each image has hover overlay with event type label
 
 **Animations:**
+
 - Images gently float up and down (different speeds)
 - On hover: image lifts forward, glows, rotates slightly
 - Staggered entrance animations on scroll
 
 #### Quick Services Overview
+
 **Layout:**
+
 - 4 floating cards in a grid
 - Each card has icon, title, brief description
 
 **Content:**
+
 - Weddings & Ceremonies
-- Corporate & Business Events  
+- Corporate & Business Events
 - Private Parties & Celebrations
 - Concerts & Live Performances
 
 **Animations:**
+
 - Cards float with physics-based motion
 - Hover triggers card flip or depth shift
 - Icons have micro-interactions
 
 #### Call to Action Section
+
 **Layout:**
+
 - Split screen design
 - Left: Compelling image
 - Right: CTA content
 
 **Content:**
+
 - Headline: "Ready to Capture Your Event?"
 - Description: Brief value proposition
 - Primary CTA: "Get in Touch"
 - Secondary CTA: "View Packages"
 
 **Animations:**
+
 - Background particles floating
 - Image parallax on scroll
 - CTA buttons with hover glow effects
@@ -302,25 +335,30 @@ Admin Dashboard:
 ### 2. PORTFOLIO PAGE
 
 #### Main Gallery View
+
 **Layout:**
+
 - Filter navigation (All, Weddings, Corporate, Parties, Concerts)
 - Dynamic grid that adjusts based on filter
 - Lightbox view for full-size images
 - **Real-time loading from database**
 
 **Content:**
+
 - Projects fetched from database
 - Each project shows cover image, title, date, category
 - Click to view full project with all images
 - Filter and search functionality
 
 **Data Flow:**
+
 - On page load: Fetch all published projects from API
 - Filter by category without re-fetching
 - Infinite scroll or pagination for large galleries
 - Image lazy loading as user scrolls
 
 **Animations:**
+
 - Filter transitions with morph effect
 - Images enter with staggered floating animation
 - Grid rearranges smoothly when filtered
@@ -328,56 +366,67 @@ Admin Dashboard:
 - Navigation between images with slide physics
 
 #### Individual Project Page
+
 **Layout:**
+
 - Project hero image (full width)
 - Project details (title, date, location, category)
 - Image gallery grid
 - Navigation to next/previous project
 
 **Content:**
+
 - Full project information from database
 - All project images
 - Social share buttons
 - Back to portfolio button
 
 **Data Flow:**
+
 - Fetch single project by ID from API
 - Preload adjacent projects for smooth navigation
 - Track project views (analytics)
 
 **Animations:**
+
 - Hero image parallax
 - Gallery images with floating effect
 - Smooth transitions between projects
 
 #### Category Deep-Dive Sections
+
 Each category (Weddings, Corporate, etc.) gets a dedicated sub-page with:
 
 **Weddings Section:**
+
 - Hero image from a wedding
 - Grid of wedding photography
 - Testimonial from a couple
 - "Book Your Wedding Photography" CTA
 
 **Corporate Events Section:**
+
 - Professional business event imagery
 - Focus on conferences, product launches, galas
 - Corporate client logos (if available)
 - "Corporate Inquiry" CTA
 
 **Parties & Celebrations Section:**
+
 - Birthday parties, anniversaries, family gatherings
 - Vibrant, energetic imagery
 - Focus on candid moments
 - "Celebrate With Us" CTA
 
 **Concerts & Performances Section:**
+
 - Live music, theater, performances
 - Dynamic, high-energy shots
 - Focus on lighting and atmosphere
 - "Capture Your Event" CTA
 
 **Animations (All Categories):**
+
 - Floating gallery grids
 - Images have depth layers
 - Scroll-triggered reveals
@@ -388,47 +437,59 @@ Each category (Weddings, Corporate, etc.) gets a dedicated sub-page with:
 ### 3. ABOUT PAGE
 
 #### Hero Section
+
 **Layout:**
+
 - Split layout: Image on left, content on right
 - Photographer portrait or behind-the-scenes shot
 
 **Content:**
+
 - Headline: "Behind the Lens"
 - Story about the photographer/business
 - Years of experience, passion statement
 - Approach to event photography
 
 **Animations:**
+
 - Portrait floats with subtle anti-gravity effect
 - Text reveals on scroll with fade-up
 - Background particles
 
 #### Philosophy Section
+
 **Layout:**
+
 - Center-aligned content
 - Visual elements floating around text
 
 **Content:**
+
 - Photography philosophy
 - What makes this service unique
 - Commitment to clients
 
 **Animations:**
+
 - Floating camera icons/elements
 - Text blocks reveal with stagger
 - Parallax depth on scroll
 
 #### Equipment/Process Section
+
 **Layout:**
+
 - Visual showcase of process
 - Could be timeline or icon grid
 
 **Content:**
+
 - Brief overview of equipment used
 - Process from booking to delivery
 - Quality guarantees
 
 **Animations:**
+
 - Icons float in formation
 - Timeline scrolls horizontally with parallax
 - Hover effects on each step
@@ -438,33 +499,41 @@ Each category (Weddings, Corporate, etc.) gets a dedicated sub-page with:
 ### 4. SERVICES PAGE
 
 #### Service Packages Section
+
 **Layout:**
+
 - 3-4 floating cards for different packages
 - Each card has different Z-depth
 - **Packages loaded from database**
 
 **Content:**
+
 - Dynamic package data from Packages table
 - Package name, description, price
 - Features list
 - "Select Package" button
 
 **Data Flow:**
+
 - Fetch active packages from API on page load
 - Packages can be updated via admin panel
 - No hardcoded pricing
 
 **Animations:**
+
 - Cards float at different heights
 - Hover lifts card forward with glow
 - Pricing reveals with count-up animation
 
 #### Add-Ons Section
+
 **Layout:**
+
 - Grid of available add-ons
 - Interactive cards
 
 **Content:**
+
 - Engagement session
 - Photo booth
 - Same-day edit video
@@ -473,23 +542,28 @@ Each category (Weddings, Corporate, etc.) gets a dedicated sub-page with:
 - Drone photography
 
 **Animations:**
+
 - Add-ons float in
 - Toggle/select interactions with physics
 - Smooth transitions
 
 #### Booking Process Section
+
 **Layout:**
+
 - Step-by-step visual guide
 - Horizontal scroll or vertical timeline
 
 **Content:**
-1. Initial Consultation
-2. Package Selection
-3. Contract & Deposit
-4. Event Day
-5. Photo Delivery
+
+- 1. Initial Consultation
+- 2. Package Selection
+- 3. Contract & Deposit
+- 4. Event Day
+- 5. Photo Delivery
 
 **Animations:**
+
 - Steps reveal on scroll
 - Connecting lines draw between steps
 - Icons bounce in
@@ -499,45 +573,57 @@ Each category (Weddings, Corporate, etc.) gets a dedicated sub-page with:
 ### 5. TESTIMONIALS PAGE
 
 #### Testimonials Grid
+
 **Layout:**
+
 - Masonry layout of testimonial cards
 - Mix of text-only and text-with-image cards
 
 **Content:**
+
 - Client quotes
 - Client names and event types
 - Star ratings
 - Some include client photos
 
 **Animations:**
+
 - Cards float independently
 - Hover brings card forward
 - Staggered entrance animations
 - Parallax movement on scroll
 
 #### Video Testimonials (Optional)
+
 **Layout:**
+
 - Video player cards
 - Thumbnail with play button overlay
 
 **Content:**
+
 - 2-3 short video testimonials if available
 
 **Animations:**
+
 - Video cards float
 - Play button glows on hover
 - Modal opens with video
 
 #### Call to Action
+
 **Layout:**
+
 - Full-width section
 - Centered content
 
 **Content:**
+
 - "Join Our Happy Clients"
 - CTA button to contact page
 
 **Animations:**
+
 - Background particles
 - Button hover effects
 
@@ -546,12 +632,15 @@ Each category (Weddings, Corporate, etc.) gets a dedicated sub-page with:
 ### 6. CONTACT PAGE
 
 #### Booking Form Section
+
 **Layout:**
+
 - Multi-step form with progress indicator
 - Glassmorphism card design with floating effect
 
 **Content:**
 **Step 1 - Event Details:**
+
 - Event Type (dropdown: Wedding, Corporate, Party, Concert, Other)
 - Event Date (date picker with availability check)
 - Event Time (optional)
@@ -559,23 +648,27 @@ Each category (Weddings, Corporate, etc.) gets a dedicated sub-page with:
 - Estimated Guest Count
 
 **Step 2 - Package Selection:**
+
 - Display available packages
 - Select package or request custom
 - Select add-ons (checkboxes)
 - Live price calculation
 
 **Step 3 - Contact Information:**
+
 - Full Name (required)
 - Email (required)
 - Phone (required)
 - Additional Message/Requirements
 
 **Step 4 - Confirmation:**
+
 - Review all details
 - Estimated cost display
 - Submit booking request
 
 **Data Flow:**
+
 - Check date availability in real-time (query Availability_Calendar)
 - If date unavailable, show alternative dates
 - On submit: Create booking in database
@@ -584,6 +677,7 @@ Each category (Weddings, Corporate, etc.) gets a dedicated sub-page with:
 - Show success message with booking reference number
 
 **Animations:**
+
 - Form steps transition with slide effect
 - Progress bar fills smoothly
 - Input fields have focus animations
@@ -592,10 +686,13 @@ Each category (Weddings, Corporate, etc.) gets a dedicated sub-page with:
 - Error states with shake animation
 
 #### Quick Contact Section
+
 **Layout:**
+
 - Side panel or section below booking form
 
 **Content:**
+
 - Email address
 - Phone number
 - Service area
@@ -603,33 +700,42 @@ Each category (Weddings, Corporate, etc.) gets a dedicated sub-page with:
 - Response time expectation
 
 **Alternative Contact:**
+
 - Simple inquiry form for general questions
 - Saves to Inquiries table
 
 **Animations:**
+
 - Info cards float
 - Icons have hover effects
 
 #### Map Section (Optional)
+
 **Layout:**
+
 - Interactive map or stylized graphic
 - Shows service area
 
 **Animations:**
+
 - Map loads with fade-in
 - Service radius visualization
 
 #### Social Media Links
+
 **Layout:**
+
 - Floating social icons
 
 **Content:**
+
 - Instagram
 - Facebook
 - Pinterest
 - LinkedIn (for corporate)
 
 **Animations:**
+
 - Icons orbit or float
 - Hover effects with color transitions
 
@@ -638,12 +744,15 @@ Each category (Weddings, Corporate, etc.) gets a dedicated sub-page with:
 ## Admin Dashboard Specifications
 
 ### Admin Login Page
+
 **Layout:**
+
 - Centered login form
 - Clean, professional design
 - Floating card with glassmorphism
 
 **Content:**
+
 - Email input
 - Password input
 - "Remember me" checkbox
@@ -651,12 +760,14 @@ Each category (Weddings, Corporate, etc.) gets a dedicated sub-page with:
 - Forgot password link
 
 **Security:**
+
 - JWT authentication
 - Protected routes
 - Session timeout after inactivity
 - Password hashing with bcrypt
 
 **Animations:**
+
 - Smooth form transitions
 - Error shake on failed login
 - Loading state on submit
@@ -664,13 +775,16 @@ Each category (Weddings, Corporate, etc.) gets a dedicated sub-page with:
 ---
 
 ### Dashboard Home
+
 **Layout:**
+
 - Grid of stat cards
 - Recent activity feed
 - Quick actions
 
 **Content:**
 **Statistics Cards:**
+
 - Total Projects
 - Pending Bookings
 - Upcoming Events
@@ -678,18 +792,21 @@ Each category (Weddings, Corporate, etc.) gets a dedicated sub-page with:
 - New Inquiries
 
 **Recent Activity:**
+
 - Latest bookings
 - Recent project uploads
 - New testimonials
 - Recent inquiries
 
 **Quick Actions:**
+
 - Add New Project
 - View Calendar
 - Check Messages
 - Manage Bookings
 
 **Animations:**
+
 - Cards count up on load
 - Activity feed with smooth transitions
 - Floating elements with subtle motion
@@ -699,33 +816,41 @@ Each category (Weddings, Corporate, etc.) gets a dedicated sub-page with:
 ### Projects Management
 
 #### All Projects View
+
 **Layout:**
+
 - Table/grid view toggle
 - Search and filter options
 - Sort by date, category, status
 
 **Content:**
+
 - List of all projects (published and draft)
 - Each entry shows: thumbnail, title, category, date, status
 - Actions: Edit, Delete, Duplicate, Toggle Featured
 
 **Functionality:**
+
 - Bulk actions (delete multiple, publish multiple)
 - Drag to reorder featured projects
 - Quick status toggle
 
 **Animations:**
+
 - Smooth transitions between grid/table view
 - Row hover effects
 - Delete confirmation modal with animation
 
 #### Add/Edit Project Page
+
 **Layout:**
+
 - Form with multiple sections
 - Live preview panel (optional)
 
 **Content:**
 **Project Information:**
+
 - Title (required)
 - Description (rich text editor)
 - Category (dropdown)
@@ -735,6 +860,7 @@ Each category (Weddings, Corporate, etc.) gets a dedicated sub-page with:
 - Featured (toggle)
 
 **Image Upload:**
+
 - Drag and drop zone
 - Multiple image upload
 - Image preview grid
@@ -743,10 +869,12 @@ Each category (Weddings, Corporate, etc.) gets a dedicated sub-page with:
 - Add alt text for each image
 
 **SEO Section:**
+
 - Meta description
 - Keywords
 
 **Data Flow:**
+
 - On save: Validate form
 - Upload images to cloud storage
 - Compress and create thumbnails
@@ -754,6 +882,7 @@ Each category (Weddings, Corporate, etc.) gets a dedicated sub-page with:
 - Update search index
 
 **Animations:**
+
 - Image upload progress bars
 - Drag and drop visual feedback
 - Save success notification
@@ -764,11 +893,14 @@ Each category (Weddings, Corporate, etc.) gets a dedicated sub-page with:
 ### Bookings Management
 
 #### Bookings List
+
 **Layout:**
+
 - Tabs for different statuses (Pending, Confirmed, Completed, Cancelled)
 - Table with booking details
 
 **Content:**
+
 - Booking reference number
 - Client name
 - Event date
@@ -778,21 +910,26 @@ Each category (Weddings, Corporate, etc.) gets a dedicated sub-page with:
 - Actions: View Details, Confirm, Cancel, Mark Complete
 
 **Functionality:**
+
 - Filter by date range, event type
 - Search by client name or email
 - Export bookings to CSV
 - Email client from booking page
 
 **Animations:**
+
 - Tab transitions
 - Row expand for details
 - Status badge animations
 
 #### Booking Details Modal
+
 **Layout:**
+
 - Modal overlay with detailed view
 
 **Content:**
+
 - All booking information
 - Client contact details
 - Package and add-ons selected
@@ -801,6 +938,7 @@ Each category (Weddings, Corporate, etc.) gets a dedicated sub-page with:
 - Admin notes section
 
 **Actions:**
+
 - Update status
 - Send email to client
 - Add internal notes
@@ -808,23 +946,28 @@ Each category (Weddings, Corporate, etc.) gets a dedicated sub-page with:
 - Generate invoice/contract
 
 #### Calendar View
+
 **Layout:**
+
 - Monthly calendar view
 - Day/Week/Month toggle
 
 **Content:**
+
 - Bookings displayed on calendar
 - Color-coded by status
 - Availability blocking
 - Click date to add availability notes
 
 **Functionality:**
+
 - Mark dates as unavailable
 - View day details
 - Drag to reschedule (with client notification)
 - Export calendar
 
 **Animations:**
+
 - Smooth calendar navigation
 - Event hover previews
 - Drag and drop feedback
@@ -834,20 +977,26 @@ Each category (Weddings, Corporate, etc.) gets a dedicated sub-page with:
 ### Services Management
 
 #### Packages List
+
 **Layout:**
+
 - Card view of all packages
 - Drag to reorder
 
 **Content:**
+
 - Package cards with all details
 - Active/Inactive toggle
 - Edit and Delete buttons
 
 #### Add/Edit Package Form
+
 **Layout:**
+
 - Form with sections
 
 **Content:**
+
 - Package name
 - Description
 - Price
@@ -858,15 +1007,19 @@ Each category (Weddings, Corporate, etc.) gets a dedicated sub-page with:
 - Active status
 
 **Data Flow:**
+
 - Save package to database
 - Updates reflect on public Services page immediately
 
 #### Add-ons Management
+
 **Layout:**
+
 - Similar to packages
 - List view with inline editing
 
 **Content:**
+
 - Add-on name
 - Price
 - Description
@@ -877,11 +1030,14 @@ Each category (Weddings, Corporate, etc.) gets a dedicated sub-page with:
 ### Testimonials Management
 
 #### Testimonials List
+
 **Layout:**
+
 - Grid or table view
 - Filter: All, Pending Approval, Approved, Featured
 
 **Content:**
+
 - Client name
 - Rating
 - Testimonial excerpt
@@ -889,15 +1045,19 @@ Each category (Weddings, Corporate, etc.) gets a dedicated sub-page with:
 - Actions: Approve, Feature, Edit, Delete
 
 **Functionality:**
+
 - Bulk approve
 - Testimonials submitted by clients need approval
 - Admin can add testimonials manually
 
 #### Add/Edit Testimonial
+
 **Layout:**
+
 - Simple form
 
 **Content:**
+
 - Client name
 - Event type
 - Rating (star selector)
@@ -911,23 +1071,28 @@ Each category (Weddings, Corporate, etc.) gets a dedicated sub-page with:
 ### Messages/Inquiries
 
 #### Inbox View
+
 **Layout:**
+
 - Email-like interface
 - Sidebar with folders (New, Read, Replied, Archived)
 
 **Content:**
+
 - List of inquiries
 - Sender name and subject
 - Date received
 - Status badge
 
 **Functionality:**
+
 - Click to open full message
 - Reply directly (sends email)
 - Archive or delete
 - Mark as read/unread
 
 **Animations:**
+
 - Smooth message transitions
 - New message notification
 
@@ -936,14 +1101,18 @@ Each category (Weddings, Corporate, etc.) gets a dedicated sub-page with:
 ### Settings
 
 #### Profile Settings
+
 **Content:**
+
 - Admin name
 - Email
 - Change password
 - Profile photo
 
 #### Business Settings
+
 **Content:**
+
 - Business name
 - Contact information
 - Service areas
@@ -952,7 +1121,9 @@ Each category (Weddings, Corporate, etc.) gets a dedicated sub-page with:
 - Email notification preferences
 
 #### Availability Settings
+
 **Content:**
+
 - Set default available days
 - Set blackout dates
 - Buffer time between events
@@ -963,6 +1134,7 @@ Each category (Weddings, Corporate, etc.) gets a dedicated sub-page with:
 ## API Endpoints
 
 ### Public Endpoints (No Auth Required)
+
 ```
 GET    /api/projects               - Get all published projects
 GET    /api/projects/:id           - Get single project
@@ -975,6 +1147,7 @@ GET    /api/availability/:date     - Check date availability
 ```
 
 ### Admin Endpoints (Auth Required)
+
 ```
 POST   /api/auth/login             - Admin login
 POST   /api/auth/logout            - Admin logout
@@ -1016,7 +1189,9 @@ POST   /api/admin/upload           - Upload images
 ## Global Features (All Pages)
 
 ### Navigation Header
+
 **Layout:**
+
 - Fixed/sticky header
 - Glassmorphism effect
 - Logo on left
@@ -1024,22 +1199,27 @@ POST   /api/admin/upload           - Upload images
 - Mobile hamburger menu
 
 **Content:**
+
 - Logo/Business name
 - Navigation links
 - "Book Now" CTA button
 
 **Animations:**
+
 - Appears/disappears on scroll direction
 - Menu items have hover underline animations
 - Mobile menu slides in with blur effect
 - Background blur when scrolled
 
 ### Footer
+
 **Layout:**
+
 - Multi-column layout
 - Dark background with subtle gradient
 
 **Content:**
+
 - Quick links
 - Contact info
 - Social media icons
@@ -1047,16 +1227,19 @@ POST   /api/admin/upload           - Upload images
 - Privacy policy link
 
 **Animations:**
+
 - Footer reveals on scroll to bottom
 - Social icons have hover effects
 - Newsletter signup (if applicable) with animations
 
 ### Page Transitions
+
 - Route changes trigger smooth fade/slide transitions
 - Loading states with floating logo animation
 - Smooth scroll behavior throughout
 
 ### Anti-Gravity Elements (Global)
+
 - Floating particles in background (subtle, not distracting)
 - Images throughout site have subtle float animation
 - Cards and containers have depth and shadow
@@ -1064,6 +1247,7 @@ POST   /api/admin/upload           - Upload images
 - Physics-based hover interactions
 
 ### Scroll Effects
+
 - Elements fade and float up as they enter viewport
 - Parallax backgrounds on hero sections
 - Progress indicators for long pages
@@ -1074,12 +1258,14 @@ POST   /api/admin/upload           - Upload images
 ## Responsive Design
 
 ### Breakpoints
+
 - Mobile: < 640px
 - Tablet: 640px - 1024px
 - Desktop: > 1024px
 - Large Desktop: > 1440px
 
 ### Mobile Adaptations
+
 - Simplified animations (performance)
 - Reduced Three.js complexity
 - Stack layouts vertically
@@ -1090,6 +1276,7 @@ POST   /api/admin/upload           - Upload images
 ---
 
 ## Performance Targets
+
 - First Contentful Paint: < 1.5s
 - Time to Interactive: < 3.5s
 - Lighthouse Performance Score: > 85
@@ -1099,6 +1286,7 @@ POST   /api/admin/upload           - Upload images
 ---
 
 ## SEO Considerations
+
 - Semantic HTML structure
 - Meta descriptions for each page
 - Alt text for all images
@@ -1110,6 +1298,7 @@ POST   /api/admin/upload           - Upload images
 ---
 
 ## Accessibility
+
 - WCAG 2.1 AA compliance
 - Keyboard navigation support
 - Focus indicators
@@ -1123,28 +1312,34 @@ POST   /api/admin/upload           - Upload images
 ## Content Requirements
 
 ### Initial Setup Data
+
 **Admin Account:**
+
 - Email and password for first admin user
 - Business information
 - Contact details
 
 **Initial Projects:**
+
 - 5-10 sample projects for launch
 - High-quality images (minimum 1920x1080)
 - Project descriptions
 - Categorized properly
 
 **Packages:**
+
 - 3-4 service packages with pricing
 - Feature lists
 - Add-ons list
 
 **Testimonials:**
+
 - 5-8 client testimonials
 - Names and event types
 - Ratings
 
 **Business Assets:**
+
 - Logo (SVG preferred)
 - Photographer headshot
 - About page content
@@ -1153,6 +1348,7 @@ POST   /api/admin/upload           - Upload images
 ---
 
 ## Future Enhancements (Phase 2)
+
 - **Client Portal**: Clients can log in to view their photos, download, and select favorites
 - **Photo Delivery System**: Secure galleries for each client with download tracking
 - **Payment Integration**: Stripe/PayPal for deposits and full payments
@@ -1172,6 +1368,7 @@ POST   /api/admin/upload           - Upload images
 ---
 
 ## Success Metrics
+
 - Increase contact form submissions by 40%
 - Average session duration > 2 minutes
 - Bounce rate < 40%
@@ -1183,31 +1380,37 @@ POST   /api/admin/upload           - Upload images
 ## Timeline Estimate
 
 ### Phase 1: Core Development (8-10 weeks)
+
 **Weeks 1-2: Backend Setup**
+
 - Database design and setup
 - API development
 - Authentication system
 - File upload infrastructure
 
 **Weeks 3-4: Admin Dashboard**
+
 - Admin login and authentication
 - Dashboard home
 - Projects management (CRUD)
 - Image upload system
 
 **Weeks 5-6: Public Website (Part 1)**
+
 - Home page with 3D effects
 - Portfolio page with dynamic data
 - About page
 - Navigation and routing
 
 **Weeks 7-8: Public Website (Part 2)**
+
 - Services page
 - Testimonials page
 - Contact/Booking system
 - Form validation and submissions
 
 **Weeks 9-10: Admin Features Completion**
+
 - Bookings management
 - Calendar system
 - Services management
@@ -1215,6 +1418,7 @@ POST   /api/admin/upload           - Upload images
 - Settings and profile
 
 ### Phase 2: Testing & Polish (2 weeks)
+
 - Cross-browser testing
 - Mobile responsiveness
 - Performance optimization
@@ -1222,6 +1426,7 @@ POST   /api/admin/upload           - Upload images
 - Content loading and setup
 
 ### Phase 3: Launch (1 week)
+
 - Domain and hosting setup
 - SSL certificate
 - Database migration
@@ -1233,6 +1438,7 @@ POST   /api/admin/upload           - Upload images
 ---
 
 ## Next Steps
+
 1. ✅ Review and approve PRD
 2. **Choose Backend Option:**
    - Option A: Node.js + PostgreSQL (More control, scalable)
