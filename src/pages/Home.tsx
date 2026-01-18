@@ -1,6 +1,8 @@
 import HeroScene from '../components/3d/HeroScene';
 import MainLayout from '../components/layout/MainLayout';
 import FeaturedWork from '../components/home/FeaturedWork';
+import ServicesOverview from '../components/home/ServicesOverview';
+import CTASection from '../components/home/CTASection';
 import { ArrowDown } from 'lucide-react';
 
 const Home = () => {
@@ -35,8 +37,11 @@ const Home = () => {
             </section>
             
             <FeaturedWork />
+            <ServicesOverview />
+            <CTASection />
         </MainLayout>
     );
 };
 
 export default Home;
+

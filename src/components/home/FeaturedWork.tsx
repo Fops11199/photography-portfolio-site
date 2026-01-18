@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { Link } from 'wouter';
 
 const projects = [
     { id: 1, title: 'Ethereal Wedding', category: 'Wedding', color: 'bg-rose-900' },
@@ -32,30 +33,62 @@ const FeaturedWork = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.5, delay: index * 0.1 }}
+                            animate={{
+                                y: [0, -10 - (index % 3) * 3, 0],
+                            }}
+                            whileHover={{ 
+                                scale: 1.03,
+                                rotateY: 5,
+                                rotateX: -5,
+                                z: 50,
+                                transition: { duration: 0.3 }
+                            }}
                             className="group relative overflow-hidden rounded-lg aspect-[3/4] cursor-pointer"
+                            style={{ 
+                                transformStyle: 'preserve-3d',
+                                perspective: '1000px'
+                            }}
                         >
-                            {/* Placeholder for Image */}
-                            <div className={`w-full h-full ${project.color} transition-transform duration-700 group-hover:scale-110`}>
-                                <div className="absolute inset-0 bg-primary/20 group-hover:bg-transparent transition-colors duration-500" />
-                            </div>
+                            <motion.div
+                                transition={{
+                                    duration: 4 + (index % 3),
+                                    repeat: Infinity,
+                                    ease: "easeInOut",
+                                }}
+                                animate={{
+                                    y: [0, -10 - (index % 3) * 3, 0],
+                                }}
+                            >
+                                {/* Placeholder for Image */}
+                                <div className={`w-full h-full ${project.color} transition-transform duration-700 group-hover:scale-110 aspect-[3/4]`}>
+                                    <div className="absolute inset-0 bg-primary/20 group-hover:bg-transparent transition-colors duration-500" />
+                                </div>
 
-                            {/* Content Overlay */}
-                            <div className="absolute inset-0 flex flex-col justify-end p-6 bg-gradient-to-t from-primary/90 to-transparent opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-all duration-500 translate-y-4 lg:group-hover:translate-y-0">
-                                <span className="text-accent-gold text-sm tracking-widest uppercase mb-2 font-medium">
-                                    {project.category}
-                                </span>
-                                <h3 className="text-2xl font-serif text-white">
-                                    {project.title}
-                                </h3>
-                            </div>
+                                {/* Glow effect on hover */}
+                                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+                                    <div className="absolute inset-0 bg-gradient-to-t from-accent-gold/20 to-transparent" />
+                                </div>
+
+                                {/* Content Overlay */}
+                                <div className="absolute inset-0 flex flex-col justify-end p-6 bg-gradient-to-t from-primary/90 to-transparent opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-all duration-500 translate-y-4 lg:group-hover:translate-y-0">
+                                    <span className="text-accent-gold text-sm tracking-widest uppercase mb-2 font-medium">
+                                        {project.category}
+                                    </span>
+                                    <h3 className="text-2xl font-serif text-white">
+                                        {project.title}
+                                    </h3>
+                                </div>
+                            </motion.div>
                         </motion.div>
                     ))}
                 </div>
 
                 <div className="text-center mt-16">
-                    <button className="text-white border-b border-accent-gold pb-1 hover:text-accent-gold transition-colors duration-300">
-                        View All Projects
-                    </button>
+                    <Link href="/portfolio">
+                        <span className="text-white border-b border-accent-gold pb-1 hover:text-accent-gold transition-colors duration-300 cursor-pointer">
+                            View All Projects
+                        </span>
+                    </Link>
                 </div>
             </div>
         </section>
@@ -63,3 +96,4 @@ const FeaturedWork = () => {
 };
 
 export default FeaturedWork;
+

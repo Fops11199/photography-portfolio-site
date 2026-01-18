@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
 import Navbar from './Navbar';
+import Footer from './Footer';
 
 interface MainLayoutProps {
     children: ReactNode;
@@ -7,11 +8,12 @@ interface MainLayoutProps {
 
 const MainLayout = ({ children }: MainLayoutProps) => {
     return (
-        <div className="min-h-screen bg-primary text-white">
+        <div className="min-h-screen bg-primary text-white flex flex-col">
             <Navbar />
-            <main>
+            <main className="flex-grow">
                 {children}
             </main>
+            <Footer />
         </div>
     );
 };

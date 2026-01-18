@@ -39,7 +39,7 @@ const GalleryGrid = () => {
                 className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
             >
                 <AnimatePresence>
-                    {filteredProjects.map((project) => (
+                    {filteredProjects.map((project, index) => (
                         <motion.div
                             layout
                             initial={{ opacity: 0, scale: 0.9 }}
@@ -47,15 +47,43 @@ const GalleryGrid = () => {
                             exit={{ opacity: 0, scale: 0.9 }}
                             transition={{ duration: 0.3 }}
                             key={project.id}
-                            className="group relative aspect-square cursor-pointer overflow-hidden rounded-lg bg-secondary"
-                            onClick={() => setSelectedProject(project)}
+                            className="relative"
+                            style={{ 
+                                transformStyle: 'preserve-3d',
+                                perspective: '1000px'
+                            }}
                         >
-                            <div className={`w-full h-full ${project.color} transition-transform duration-500 group-hover:scale-110`} />
-                            
-                            <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center text-center p-4">
-                                <span className="text-accent-gold text-xs uppercase tracking-wider mb-2">{project.category}</span>
-                                <h3 className="text-white text-xl font-serif italic">{project.title}</h3>
-                            </div>
+                            <motion.div
+                                animate={{
+                                    y: [0, -8 - (index % 3) * 2, 0],
+                                }}
+                                transition={{
+                                    duration: 4 + (index % 3),
+                                    repeat: Infinity,
+                                    ease: "easeInOut",
+                                }}
+                                whileHover={{ 
+                                    scale: 1.05,
+                                    rotateY: 5,
+                                    rotateX: -3,
+                                    z: 50,
+                                    transition: { duration: 0.3 }
+                                }}
+                                className="group aspect-square cursor-pointer overflow-hidden rounded-lg bg-secondary"
+                                onClick={() => setSelectedProject(project)}
+                            >
+                                <div className={`w-full h-full ${project.color} transition-transform duration-500 group-hover:scale-110`} />
+                                
+                                {/* Glow effect */}
+                                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                                    <div className="absolute inset-0 bg-gradient-to-t from-accent-gold/20 to-transparent" />
+                                </div>
+                                
+                                <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center text-center p-4">
+                                    <span className="text-accent-gold text-xs uppercase tracking-wider mb-2">{project.category}</span>
+                                    <h3 className="text-white text-xl font-serif italic">{project.title}</h3>
+                                </div>
+                            </motion.div>
                         </motion.div>
                     ))}
                 </AnimatePresence>
@@ -70,3 +98,4 @@ const GalleryGrid = () => {
 };
 
 export default GalleryGrid;
+
