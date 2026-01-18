@@ -12,6 +12,7 @@ export default {
         accent: {
           gold: '#D4AF37',
           rose: '#E8B4B8',
+          orange: '#FF5C00',
         },
         mutes: '#A0A0A0',
       },
